@@ -24,6 +24,7 @@ func AddRoutes() {
 
 	// Set pin to output mode
 	pin.Output()
+	pin.Low()
 }
 
 func blinkLight() {

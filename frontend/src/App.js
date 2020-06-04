@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
-import './App.less';
+import './App.css';
 
 function App() {
   useEffect(() => {
@@ -18,6 +18,9 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <button onClick={() => fetch('http://172.16.1.108:8081/api/blink')}>
+          Hello
+        </button>
         <a
           className="App-link"
           href="https://reactjs.org"
