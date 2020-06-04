@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
-import './App.scss';
+import './App.less';
 
 function App() {
   useEffect(() => {
