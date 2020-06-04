@@ -1,9 +1,13 @@
 package raspberrypi
 
 import (
+	"fmt"
+	"net/http"
+	"os"
+	"time"
+
 	"github.com/stianeikeland/go-rpio"
 )
-
 
 var (
 	// Use mcu pin 10, corresponds to physical pin 19 on the pi
