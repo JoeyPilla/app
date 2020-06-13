@@ -1,0 +1,8 @@
+.ingredient-dropdown {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: space-around;
+  padding: 5px;
+  width: 300px;
+}
