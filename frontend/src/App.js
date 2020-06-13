@@ -1,37 +1,28 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import { Router, Link, useNavigate } from "@reach/router"
 import logo from './logo.svg';
 import './App.css';
-
-function App() {
+import Ready from './Ready'
+import Add from './Add'
+import NotReady from './NotReady'
+export default function App() {
+  // const navigate = useNavigate()
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch('/api/todo/all')
+      const data = await fetch('/hello')
       const json = await data.json()
-      console.log(json)
+      if (!json.ready) {
+        // navigate("/config")
+      }
     }
     fetchData()
- }, [])
+  }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <button onClick={() => fetch('http://172.16.1.108:8081/api/blink')}>
-          Hello
-        </button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Ready path="/" />
+      <NotReady path="config" />
+      <Add path="add" />
+    </Router>
+  )
 }
 
-export default App;

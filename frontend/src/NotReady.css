@@ -1,0 +1,20 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.not-ready-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
