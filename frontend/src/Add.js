@@ -9,6 +9,7 @@ export default function Add() {
     fetch(`/api/ingredient?name=${encodeURI(ingredient)}`, {
       method: 'POST'
     })
+    setIngredient('')
   }
 
   return (

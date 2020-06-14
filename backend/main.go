@@ -9,6 +9,7 @@ import (
 
 	"github.com/JoeyPilla/rest-api-example/api"
 	"github.com/JoeyPilla/rest-api-example/global"
+	"github.com/JoeyPilla/rest-api-example/raspberrypi"
 
 	_ "github.com/lib/pq"
 )
@@ -102,6 +103,8 @@ func main() {
 	global.MotorMap["motor5"] = 0
 	global.MotorMap["motor6"] = 0
 	global.MotorMap["motor7"] = 0
+
+	raspberrypi.Initialize()
 
 	db := api.Connect()
 	handleRequests()

@@ -23,8 +23,8 @@ const (
 
 var tables []string = []string{
 	"ingredient",
-	"drink_ingredient",
 	"recipe",
+	"drink_ingredient",
 }
 
 func Connect() *sql.DB {
@@ -88,6 +88,7 @@ func ExampleDB_QueryContext(db *sql.DB) []string {
 
 func InitalizeDB(db *sql.DB) error {
 	currentTables := ExampleDB_QueryContext(db)
+	// ExampleDB_QueryContext(db)
 	for _, table := range tables {
 		if !contains(currentTables, table) {
 			err := createTable(table, db)
