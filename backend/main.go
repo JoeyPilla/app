@@ -30,6 +30,7 @@ type Motors struct {
 
 func homePage(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Home Endpoint Hit")
+	http.FileServer(http.Dir("<path to build>"))
 }
 
 func setMotors(w http.ResponseWriter, r *http.Request) {
@@ -84,7 +85,9 @@ func hello(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleRequests() {
-	http.HandleFunc("/", homePage)
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
+		http.ServeFile(w, r, "../frontend/build/index.html");
+	});
 	http.HandleFunc("/hello", hello)
 	http.HandleFunc("/setMotors", setMotors)
 	http.HandleFunc("/getMotors", getMotors)
