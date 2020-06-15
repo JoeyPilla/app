@@ -5,9 +5,9 @@ import (
 	"log"
 )
 
-func getAllIngredients() []Ingredient{
+func getAllIngredients() []Ingredient {
 	ctx := context.Background()
-	rows, err := db.QueryContext(ctx, `SELECT * FROM ingredient`)
+	rows, err := db.QueryContext(ctx, `SELECT * FROM ingredient ORDER BY ingredient_name ASC`)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -32,7 +32,7 @@ func getAllIngredients() []Ingredient{
 	return ingredients
 }
 
-func getIngredientById(id int) Ingredient{
+func getIngredientById(id int) Ingredient {
 	ctx := context.Background()
 	rows, err := db.QueryContext(ctx, `
 	SELECT 
@@ -60,7 +60,7 @@ func getIngredientById(id int) Ingredient{
 	return ingredient
 }
 
-func getIngredientByName(name string) Ingredient{
+func getIngredientByName(name string) Ingredient {
 	ctx := context.Background()
 	rows, err := db.QueryContext(ctx, `
 	SELECT 

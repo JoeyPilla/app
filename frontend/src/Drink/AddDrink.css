@@ -1,0 +1,29 @@
+.add-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #545f66;
+  opacity: 0.9;
+}
+
+.plus-circle-icon {
+  padding: 10px;
+  color: #48BEFF;
+  font-size: 60px;
+  position: fixed;
+  bottom: 0;
+  right: 10px;
+  background-color: white;
+}

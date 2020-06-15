@@ -2,10 +2,11 @@ package recipe
 
 import (
 	"context"
+	"fmt"
 	"log"
 )
 
-func addRecipe(name string) int64 {
+func addRecipe(name string) Recipe {
 	ctx := context.Background()
 	tx, err := db.BeginTx(ctx, nil)
 	if err != nil {
@@ -17,8 +18,9 @@ func addRecipe(name string) int64 {
 		// Incase we find any error in the query execution, rollback the transaction
 		log.Fatal(err)
 		tx.Rollback()
-		return 0
+		return Recipe{}
 	}
+	fmt.Print(result.LastInsertId())
 	rows, err := result.RowsAffected()
 	if err != nil {
 		log.Fatal(err)
@@ -32,7 +34,8 @@ func addRecipe(name string) int64 {
 	if err != nil {
 		log.Fatal(err)
 	}
-	return rows
+
+	return getRecipeByName(name)
 }
 
 func deleteRecipe(id int) int64 {

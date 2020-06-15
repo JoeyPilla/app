@@ -89,7 +89,7 @@ func handleRequests() {
 	http.HandleFunc("/getMotors", getMotors)
 	api.AddRoutes()
 	// raspberrypi.AddRoutes()
-	log.Fatal(http.ListenAndServe(":8081", nil))
+	log.Fatal(http.ListenAndServeTLS(":8081", "server.crt", "server.key", nil))
 
 }
 

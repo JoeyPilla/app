@@ -9,7 +9,6 @@ import (
 )
 
 var motors []rpio.Pin
-var mlToSec float64 = (19 / 15)
 var cupToMl float64 = 236.588
 var ozToMl float64 = 29.5735
 
@@ -41,15 +40,26 @@ func Pour(motor int, amount float64, unitOfMeasurement string, c chan float64) {
 		c <- 0.0
 		return
 	}
-	// motors[motor].Low()
-	t := float64(amount) * mlToSec
-	if unitOfMeasurement == "cup" {
+
+	pourRate := []float64{
+		0.667,
+		0.8,
+		0.725,
+		1.1,
+		1.0,
+		0.75,
+		0.6,
+	}
+
+	t := float64(amount) / pourRate[motor]
+	if unitOfMeasurement == "cup" || unitOfMeasurement == "cups" {
 		t = t * cupToMl
 	} else if unitOfMeasurement == "oz" {
 		t = t * ozToMl
 	}
 	// write how long it will take
 	c <- t
+	// motors[motor].Low()
 	time.Sleep(time.Duration(t * float64(time.Millisecond)))
 	// defer motors[motor].High()
 }
