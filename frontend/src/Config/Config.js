@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import logo from './logo.svg';
-import './NotReady.css';
+import './Config.css';
 import IngredientDropdown from './IngredientDropdown'
 
-export default function NotReady() {
+export default function Config() {
   const [ingredients, setIngredients] = useState([])
   const [motor0, setMotor0] = useState(0)
   const [motor1, setMotor1] = useState(0)

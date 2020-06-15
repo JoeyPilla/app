@@ -1,0 +1,16 @@
+.progress-bar {
+  background-color: #ED5736;
+  height: 5px;
+}
+
+.timer-container {
+  width: 200px;
+  height: 5px;
+  background-color: #545f66;
+}
+
+.spinner-icon {
+  padding: 10px;
+  color: #ED5736;
+  font-size: 60px;
+}

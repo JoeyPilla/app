@@ -1,0 +1,18 @@
+.ingredient {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+  border-radius: 5px;
+  border: solid 1px #545f66;
+  box-shadow: 0 8px 6px -6px grey;
+  margin: 2px;
+  padding-left: 5px;
+  text-transform: capitalize;
+}
+
+.times-circle-icon {
+  padding: 10px;
+  color: tomato;
+  font-size: 20px;
+}

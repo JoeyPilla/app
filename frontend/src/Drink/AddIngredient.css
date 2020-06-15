@@ -1,0 +1,4 @@
+.add-ingredient-form {
+  display: flex;
+  flex-direction: column;
+}

@@ -51,7 +51,18 @@ func Pour(motor int, amount float64, unitOfMeasurement string, c chan float64) {
 	}
 	motors[motor].Low()
 	t := float64(amount) * mlToSec
-	if unitOfMeasurement == "cup" {
+	if unitOfMeasurement == "cup" || unitOfMeasurement == "cups" {
+	pourRate := []float64{
+		0.667,
+		0.8,
+		0.725,
+		1.1,
+		1.0,
+		0.75,
+		0.6,
+	}
+
+	t := float64(amount) / pourRate[motor]
 		t = t * cupToMl
 	} else if unitOfMeasurement == "oz" {
 		t = t * ozToMl

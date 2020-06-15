@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import logo from './logo.svg';
 import './IngredientDropdown.css';
 
 export default function IngredientDropdown({item, value, setValue, options}) {

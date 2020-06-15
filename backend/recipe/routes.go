@@ -10,11 +10,17 @@ import (
 func AddRoutes() {
 	http.HandleFunc("/api/recipe/all", allRecipes)
 	http.HandleFunc("/api/recipe", recipe)
+	http.HandleFunc("/api/recipe/available", availableRecipes)
 }
 
 func allRecipes(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(getAllRecipes())
+}
+
+func availableRecipes(w http.ResponseWriter, r *http.Request) {
+	w.Header().Add("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(getAvailableRecipes())
 }
 
 func RecipeById(w http.ResponseWriter, r *http.Request, id int) {
@@ -45,8 +51,7 @@ func recipe(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		name := r.FormValue("name")
-		count := addRecipe(name)
-		fmt.Fprintf(w, fmt.Sprintf("%d records inserted.", count))
+		json.NewEncoder(w).Encode(addRecipe(name))
 	case "DELETE":
 		id, err := strconv.Atoi(r.URL.Query().Get("id"))
 		if err != nil || id < 1 {
