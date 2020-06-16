@@ -85,15 +85,15 @@ func hello(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleRequests() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
-		http.ServeFile(w, r, "../frontend/build/index.html");
-	});
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "../frontend/build/index.html")
+	})
 	http.HandleFunc("/hello", hello)
 	http.HandleFunc("/setMotors", setMotors)
 	http.HandleFunc("/getMotors", getMotors)
 	api.AddRoutes()
 	// raspberrypi.AddRoutes()
-	log.Fatal(http.ListenAndServeTLS(":8081", "server.crt", "server.key", nil))
+	log.Fatal(http.ListenAndServe(":8081", nil))
 
 }
 
