@@ -19,8 +19,7 @@
 		"react-scripts": "3.4.1",
 		"react-spring": "^8.0.27"
 	},
-	"homepage": "http://bartender.com/",
-	"proxy": "https://localhost:8081",
+	"proxy": "http://70.237.8.101:1233",
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",

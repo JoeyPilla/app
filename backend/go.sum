@@ -2,6 +2,8 @@ github.com/JoeyPilla/rest-api-example/api v0.0.0-20200509220308-0d67340149da h1:
 github.com/JoeyPilla/rest-api-example/api v0.0.0-20200509220308-0d67340149da/go.mod h1:cW0cGyBmgGxnMhFAhkzAWrZTfyjezYNMXtPzofBuwm4=
 github.com/gorilla/mux v1.7.4 h1:VuZ8uybHlWmqV03+zRzdwKL4tUnIp1MAQtp1mIFE1bc=
 github.com/gorilla/mux v1.7.4/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
+github.com/jsha/minica v1.0.2 h1:6FV9qra4YijaNnBzlwZT2PVnO5m8DMB+RGqne3k9i/g=
+github.com/jsha/minica v1.0.2/go.mod h1:PWJEXL7VlTg5nMYPUxWr0Ws6bAHY0kGFixI/r+3Rb7g=
 github.com/lib/pq v1.5.2 h1:yTSXVswvWUOQ3k1sd7vJfDrbSl8lKuscqFJRqjC0ifw=
 github.com/lib/pq v1.5.2/go.mod h1:5WUZQaWbwv1U+lTReE5YruASi9Al49XbQIvNi/34Woo=
 github.com/stianeikeland/go-rpio v1.0.0 h1:9a5DDConuUBSBR4mYsr9dV0uAxGypybCumg0KR2o3fc=
