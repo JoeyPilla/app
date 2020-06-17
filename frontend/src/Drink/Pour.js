@@ -28,7 +28,7 @@ export default function Pour({ recipeId }) {
           onClick={(e) => {
             e.preventDefault()
             e.stopPropagation()
-            // pour()
+            pour()
             setDuration(15)
           }}
           className="pour-button"

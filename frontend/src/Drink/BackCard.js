@@ -1,16 +1,15 @@
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './BackCard.css'
-import { useSpring, animated as a } from 'react-spring'
-import Pour from './Pour'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
-import {navigate} from "@reach/router"
-export default function BackCard({ recipe, ingredients}) {
+import {useNavigate} from "@reach/router"
+export default function BackCard({ recipe, ingredients, setFlip }) {
+  const navigate = useNavigate()
   return (
     <div className='back-card-container'>
     <div className="back-card-ingredient" onClick={()=> navigate(`/drink/${recipe.id}`)}>
-      {recipe?.name}
+      <h2>{recipe?.name}</h2>
       <FontAwesomeIcon
             className="back-card-icon"
         icon={faTimesCircle}
@@ -20,6 +19,17 @@ export default function BackCard({ recipe, ingredients}) {
       />
       </div>
       {ingredients}
+      <div className="back-card-button-container">
+      <button
+            type="button"
+            className="back-card-form-button-back"
+            onClick={() => {
+              setFlip()
+            }}
+          >Back</button>
+        <button type="button" className="back-card-form-button" onClick={() => navigate(`/drink/${recipe.id}`)}>Edit</button>
+      </div>
+
     </div>
   )
 }

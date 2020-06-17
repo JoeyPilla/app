@@ -17,3 +17,40 @@
   font-size: 20px;
 
 }
+
+.back-card-container{
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
+  height: 100%
+}
+
+.back-card-button-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Button */
+.back-card-form-button {
+  background-color: #48BEFF;
+  border: none;
+  color: #fff;
+  font-size: 1em;
+  padding: 10px 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.back-card-form-button-back {
+  background-color: tomato;
+  border: none;
+  color: #fff;
+  font-size: 1em;
+  padding: 10px 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: normal;
+  cursor: pointer;
+}

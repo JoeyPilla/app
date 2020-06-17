@@ -14,12 +14,11 @@
 }
 
 .not-ready-container {
+  padding-top: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90vh;
-  width: 100vw;
 }
 
 /* Button */

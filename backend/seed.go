@@ -22,6 +22,7 @@ package main
 // func main() {
 // 	db := api.Connect()
 // 	defer db.Close()
+// 	seedIngredients()
 
 // }
 
@@ -54,7 +55,6 @@ package main
 // 	if jsonErr != nil {
 // 		log.Fatal(jsonErr)
 // 	}
-
 // 	for _, v := range drinks.Drinks {
 // 		ingredient.AddIngredient(v.Ingredient)
 // 	}

@@ -66,7 +66,19 @@ func Pour(motor int, amount float64, unitOfMeasurement string, c chan float64) {
 }
 
 func GetPourRate(motor int) {
-	// motors[motor].Low()
-	time.Sleep(time.Duration(25 * float64(time.Second)))
-	// defer motors[motor].High()
+	motors[motor].Low()
+	time.Sleep(50 * time.Second)
+	defer motors[motor].High()
+}
+
+func SetMotorPourRate(motor int, value int) {
+	pourRate[motor] = float64(value) / 50.0
+}
+
+func Load() {
+	// for _, motor := range(motors) {
+	// 	motor.Low()
+	// 	defer motor.High()
+	// }
+	// time.Sleep(4 * time.Second)
 }

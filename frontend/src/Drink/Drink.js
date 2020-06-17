@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import DrinkListElement from './DrinkListElement'
 import AddIngredient from './AddIngredient'
 import Pour from './Pour'
-
+import './Drink.css'
+import DrinkIngredient from './DrinkIngredient'
 export default function Drink({id}) {
   const [updated, setUpdated] = useState(false)
   const [ingredients, setIngredients] = useState([])
@@ -22,7 +22,7 @@ export default function Drink({id}) {
     }
     fetchIngredients()
     fetchRecipe()
-  }, [id])
+  }, [id, updated])
   useEffect(() => {
     const fetchIngredients = async () => {
       const data = await fetch('/api/ingredient/all')
@@ -31,14 +31,13 @@ export default function Drink({id}) {
     }
     fetchIngredients()
   }, [])
-  const ingred = ingredients.map((i) => <h3>{i.measure} {i.unitOfMeasurement} {i.ingredient.name}</h3>)
+  const ingred = ingredients.map((i) => <DrinkIngredient ingredient={i} updated={updated} setUpdated={setUpdated}/>)
   return (
-    <div className="ingredients">
+    <div className="single-drink-container">
       <h1>
       {recipe.name}
       </h1>
       {ingred}
-      <Pour recipeId={recipe.id} />
       <AddIngredient updated={updated} setUpdated={setUpdated} recipeId={id}/>
     </div>
   )

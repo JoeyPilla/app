@@ -61,28 +61,24 @@ const Form = ({ updated, setUpdated, setShow, recipeId }) => {
   const unitsOptions = possibleUnits.map(unit => <option value={unit}>{unit}</option>)
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(ingredient)
-    console.log(amount)
-    console.log(units)
   if (ingredient > 0 && amount !== '' && units !== '') {
     fetch(`/api/drink?ingredientId=${encodeURI(ingredient)}&recipeId=${encodeURI(recipeId)}&measure=${eval(amount)}&unitOfMeasurement=${units}`, {
       method: 'POST'
     }).then(async (res) => {
-      const json = await res.json()
       setUpdated(!updated)
       setShow(false)
     })
   }
 }
   return (
-    <div classNmae='not-ready-container'>
+    <div className='not-ready-container'>
 
     <div className='add-ingredient-input-container'>
     <form className="add-ingredient-form" onSubmit={(e) => handleSubmit(e)}>
     <div className='temp'>
       Ingredient:
       <select className='select-box' value={ingredient} onChange={e => setIngredient(e.target.value)}>
-        <option value={0}>Select an ingredient...</option>
+        <option value={0}>Select ingredient...</option>
         {ingredientOptions}
       </select>
     </div>
@@ -91,7 +87,8 @@ const Form = ({ updated, setUpdated, setShow, recipeId }) => {
       <input
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
-        placeholder="enter ingredient amount"
+              placeholder="Ingredient amount"
+              className='amount-input'
         />
     </div>
     <div className='temp'>
@@ -100,18 +97,20 @@ const Form = ({ updated, setUpdated, setShow, recipeId }) => {
         <option value={''}>Select a unit...</option>
         {unitsOptions}
       </select>
-      </div>
-          <button
-            type='button'
-            className='form-button-cancel'
-            onClick={() => {
-              setIngredient('')
-              setAmount('')
-              setUnits(0)
-              setShow(false)
-            }}
+          </div>
+          <div className='add-ingredient-buttons'>
+        <button
+          type='button'
+          className='form-button-cancel'
+          onClick={() => {
+            setIngredient('')
+            setAmount('')
+            setUnits(0)
+            setShow(false)
+          }}
           >cancel</button>
-      <button type='submit' className='form-button'>submit</button>
+          <button type='submit' className='form-button'>submit</button>
+        </div>
       </form>
       </div>
         </div>

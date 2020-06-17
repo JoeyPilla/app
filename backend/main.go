@@ -51,6 +51,7 @@ func setMotors(w http.ResponseWriter, r *http.Request) {
 		global.MotorMap["motor5"], _ = strconv.Atoi(resp.Motor5)
 		global.MotorMap["motor6"], _ = strconv.Atoi(resp.Motor6)
 		global.MotorMap["motor7"], _ = strconv.Atoi(resp.Motor7)
+		raspberrypi.Load()
 	default:
 		fmt.Fprintf(w, "Sorry, only POST methods are supported.")
 	}
@@ -61,6 +62,14 @@ func TestMotor(w http.ResponseWriter, r *http.Request) {
 	go raspberrypi.GetPourRate(motor)
 	fmt.Fprintf(w, fmt.Sprintf("Testing Motor %d", motor))
 }
+
+func SetMotorPourRate(w http.ResponseWriter, r *http.Request) {
+	motor, _ := strconv.Atoi(r.URL.Query().Get("motor"))
+	value, _ := strconv.Atoi(r.URL.Query().Get("value"))
+	raspberrypi.SetMotorPourRate(motor, value)
+	fmt.Fprintf(w, fmt.Sprintf("Set Motor %d's flow rate to %d", motor, value))
+}
+
 
 func getMotors(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
@@ -95,6 +104,7 @@ func handleRequests() {
 	http.HandleFunc("/setMotors", setMotors)
 	http.HandleFunc("/getMotors", getMotors)
 	http.HandleFunc("/TestMotor", TestMotor)
+	http.HandleFunc("/setMotorPourRate", SetMotorPourRate)
 	api.AddRoutes()
 	// raspberrypi.AddRoutes()
 	log.Fatal(http.ListenAndServe(":8081", nil))
@@ -110,7 +120,7 @@ func main() {
 	global.MotorMap["motor6"] = 0
 	global.MotorMap["motor7"] = 0
 
-	// raspberrypi.Initialize()
+	raspberrypi.Initialize()
 
 	db := api.Connect()
 	handleRequests()

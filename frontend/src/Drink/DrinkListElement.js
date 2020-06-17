@@ -30,25 +30,20 @@ export default function DrinkListElement({ recipe, updated, setUpdated }) {
     }
     fetchIngredients()
   }, [])
-  const ingred = ingredients.map((i) => <h3 key={i.ingredient_id}>{i.measure} {i.unitOfMeasurement} {i.ingredient.name}</h3>)
+  const ingred = ingredients.map((i) => <p key={i.ingredient_id}>{i.measure} {i.unitOfMeasurement} {i.ingredient.name}</p>)
 
   
   return (
     <div
-      onClick={(e) => { setFlipped(state => !state) }}
       className="drink-list-element-container">
       {!flipped && <a.div className="c front" style={{ opacity: opacity.interpolate(o => 1 - o), transform }}>
         <FrontCard recipe={recipe} setFlip={(e) => { setFlipped(state => !state) }}/>
       </a.div>
       }
       {flipped && <a.div className="c back" style={{ opacity, transform: transform.interpolate(t => `${t} rotateX(180deg)`) }}>
-        <BackCard recipe={recipe} ingredients={ingred}/>
+        <BackCard recipe={recipe} ingredients={ingred} setFlip={(e) => { setFlipped(state => !state) }}/>
       </a.div>}
 </div>
-
-
-
-
   )
 }
 

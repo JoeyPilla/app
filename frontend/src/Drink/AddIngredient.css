@@ -14,9 +14,29 @@
   height: 150px;
 }
 
+.add-ingredient-input-container{
+  display: flex;
+  justify-content: center;
+}
+
 .temp {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.add-ingredient-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 12.5%;
+  width: 75%;
+}
+
+.amount-input {
+  font-size: 18px;
+  margin: 10px 0px 10px 10px;
 }
 
 .input {
@@ -27,6 +47,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  font-size: 18px;
 }
 
 /* Button */
@@ -40,6 +61,7 @@
   border-radius: 5px;
   text-transform: uppercase;
   font-weight: normal;
+  cursor: pointer;
 }
 
 .form-button-cancel {
@@ -52,6 +74,7 @@
   border-radius: 5px;
   text-transform: uppercase;
   font-weight: normal;
+  cursor: pointer;
 }
 
 .form-button-container {
