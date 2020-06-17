@@ -9,6 +9,7 @@ import (
 )
 
 var motors []rpio.Pin
+var pourRate []float64
 var cupToMl float64 = 236.588
 var ozToMl float64 = 29.5735
 
@@ -28,27 +29,7 @@ func Initialize() {
 		rpio.Pin(22),
 	}
 
-	for _, motor := range motors {
-		motor.Output()
-		motor.High()
-	}
-
-}
-
-// motor1 0.667 ml/sec
-// motor2 0.76 ml/sec
-// motor3 0.5 ml/sec
-// motor4 1.1 ml/sec
-// motor5 1.0 ml/sec
-// motor6 1.0 ml/sec
-// motor7 1.0 ml/sec
-
-func Pour(motor int, amount float64, unitOfMeasurement string, c chan float64) {
-	if motor < 0 {
-		c <- 0.0
-		return
-	}
-	pourRate := []float64{
+	pourRate = []float64{
 		0.8,
 		0.96,
 		0.725,
@@ -56,6 +37,19 @@ func Pour(motor int, amount float64, unitOfMeasurement string, c chan float64) {
 		1.0,
 		0.75,
 		0.6,
+	}
+
+	for _, motor := range motors {
+		motor.Output()
+		motor.High()
+	}
+
+}
+
+func Pour(motor int, amount float64, unitOfMeasurement string, c chan float64) {
+	if motor < 0 {
+		c <- 0.0
+		return
 	}
 
 	t := float64(amount) / pourRate[motor]
@@ -69,4 +63,10 @@ func Pour(motor int, amount float64, unitOfMeasurement string, c chan float64) {
 	motors[motor].Low()
 	time.Sleep(time.Duration(t * float64(time.Second)))
 	defer motors[motor].High()
+}
+
+func GetPourRate(motor int) {
+	// motors[motor].Low()
+	time.Sleep(time.Duration(25 * float64(time.Second)))
+	// defer motors[motor].High()
 }

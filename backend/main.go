@@ -9,6 +9,7 @@ import (
 
 	"github.com/JoeyPilla/rest-api-example/api"
 	"github.com/JoeyPilla/rest-api-example/global"
+	"github.com/JoeyPilla/rest-api-example/raspberrypi"
 
 	_ "github.com/lib/pq"
 )
@@ -55,6 +56,12 @@ func setMotors(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func TestMotor(w http.ResponseWriter, r *http.Request) {
+	motor, _ := strconv.Atoi(r.URL.Query().Get("motor"))
+	go raspberrypi.GetPourRate(motor)
+	fmt.Fprintf(w, fmt.Sprintf("Testing Motor %d", motor))
+}
+
 func getMotors(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
@@ -87,10 +94,10 @@ func handleRequests() {
 	http.HandleFunc("/hello", hello)
 	http.HandleFunc("/setMotors", setMotors)
 	http.HandleFunc("/getMotors", getMotors)
+	http.HandleFunc("/TestMotor", TestMotor)
 	api.AddRoutes()
 	// raspberrypi.AddRoutes()
 	log.Fatal(http.ListenAndServe(":8081", nil))
-
 }
 
 func main() {

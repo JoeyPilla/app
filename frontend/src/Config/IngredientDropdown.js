@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './IngredientDropdown.css';
 
 export default function IngredientDropdown({item, value, setValue, options}) {
