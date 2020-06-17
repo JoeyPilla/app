@@ -48,7 +48,6 @@ func Pour(motor int, amount float64, unitOfMeasurement string, c chan float64) {
 		c <- 0.0
 		return
 	}
-	motors[motor].Low()
 	pourRate := []float64{
 		0.8,
 		0.96,
@@ -66,8 +65,8 @@ func Pour(motor int, amount float64, unitOfMeasurement string, c chan float64) {
 		t = t * ozToMl
 	}
 	// write how long it will take
-	fmt.Print(t)
 	c <- t
+	motors[motor].Low()
 	time.Sleep(time.Duration(t * float64(time.Second)))
 	defer motors[motor].High()
 }

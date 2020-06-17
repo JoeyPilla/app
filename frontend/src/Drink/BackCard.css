@@ -1,0 +1,19 @@
+.back-card-ingredient {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-transform: capitalize;
+}
+
+.back-card-icon {
+  top: 0;
+  position: absolute;
+  right: 0;
+  padding: 10px;
+  color: tomato;
+  font-size: 20px;
+
+}

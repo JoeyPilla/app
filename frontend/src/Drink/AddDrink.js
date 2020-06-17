@@ -61,18 +61,29 @@ const Form = ({setRecentlyAdded, updated, setUpdated, setShow}) => {
   }
 }
   return (
-    <div>
+    <div className="form-container">
       <form onSubmit={(e) => handleSubmit(e)}>
-        <label>
-          Recipe Name:
         <input
           autofocus="true"
           type="text"
           name="name"
+          placeholder="Recipe Name"
+          className="input"
           onChange={(e) => setRecipe(e.target.value)}
         />
-      </label>
-    </form>
+        <div className="form-button-container">
+          <button
+            type="button"
+            className="form-button-cancel"
+            onClick={() => {
+              setRecipe('')
+              setShow(false)
+            }}
+          >Cancel</button>
+          <button type="submit" className="form-button">Add</button>
+        </div>
+      </form>
+      
     </div>
   )
 }

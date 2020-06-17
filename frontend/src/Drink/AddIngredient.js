@@ -75,30 +75,45 @@ const Form = ({ updated, setUpdated, setShow, recipeId }) => {
   }
 }
   return (
+    <div classNmae='not-ready-container'>
+
+    <div className='add-ingredient-input-container'>
     <form className="add-ingredient-form" onSubmit={(e) => handleSubmit(e)}>
-    <div>
+    <div className='temp'>
       Ingredient:
-      <select value={ingredient} onChange={e => setIngredient(e.target.value)}>
+      <select className='select-box' value={ingredient} onChange={e => setIngredient(e.target.value)}>
         <option value={0}>Select an ingredient...</option>
         {ingredientOptions}
       </select>
     </div>
-    <div>
+    <div className='temp'>
       Amount:
       <input
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
         placeholder="enter ingredient amount"
-      />
+        />
     </div>
-    <div>
+    <div className='temp'>
       Units:
-      <select value={units} onChange={e => setUnits(e.target.value)}>
+      <select className='select-box' value={units} onChange={e => setUnits(e.target.value)}>
         <option value={''}>Select a unit...</option>
         {unitsOptions}
       </select>
       </div>
-      <button type='submit'>submit</button>
-</form>
+          <button
+            type='button'
+            className='form-button-cancel'
+            onClick={() => {
+              setIngredient('')
+              setAmount('')
+              setUnits(0)
+              setShow(false)
+            }}
+          >cancel</button>
+      <button type='submit' className='form-button'>submit</button>
+      </form>
+      </div>
+        </div>
   )
 }

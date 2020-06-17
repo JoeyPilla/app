@@ -19,7 +19,7 @@
 		"react-scripts": "3.4.1",
 		"react-spring": "^8.0.27"
 	},
-	"proxy": "https://localhost:8081",
+	"proxy": "http://localhost:8081",
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",

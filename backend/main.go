@@ -9,7 +9,6 @@ import (
 
 	"github.com/JoeyPilla/rest-api-example/api"
 	"github.com/JoeyPilla/rest-api-example/global"
-	"github.com/JoeyPilla/rest-api-example/raspberrypi"
 
 	_ "github.com/lib/pq"
 )
@@ -85,9 +84,6 @@ func hello(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleRequests() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "../frontend/build/index.html")
-	})
 	http.HandleFunc("/hello", hello)
 	http.HandleFunc("/setMotors", setMotors)
 	http.HandleFunc("/getMotors", getMotors)
@@ -107,7 +103,7 @@ func main() {
 	global.MotorMap["motor6"] = 0
 	global.MotorMap["motor7"] = 0
 
-	raspberrypi.Initialize()
+	// raspberrypi.Initialize()
 
 	db := api.Connect()
 	handleRequests()

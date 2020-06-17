@@ -5,7 +5,7 @@ import (
 	"log"
 )
 
-func addIngredient(name string) int64 {
+func AddIngredient(name string) int64 {
 	ctx := context.Background()
 	tx, err := db.BeginTx(ctx, nil)
 	if err != nil {

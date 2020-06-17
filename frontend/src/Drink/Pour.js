@@ -2,20 +2,39 @@ import React, { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import './Pour.css'
+
 export default function Pour({ recipeId }) {
     const [duration, setDuration] = useState(0)
     const [count, setCount] = useState(0)
-    const pour = async () => {
+  const pour = async () => {
         const data = await fetch(`/api/drink/pour?recipeId=${recipeId}`, {method: 'POST'})
         const json = await data.json()
         setDuration(json)
     }
     
     return (
-        <>
-            <h1 onClick={() => pour()}>Pour</h1>
-            {duration > 0 && <Timer reset={() => setDuration(0)} stop={duration}/>}
-        </>
+      <div className='pour-container'>
+        {
+          duration > 0 ?
+          <FontAwesomeIcon
+            className="spinner-icon"
+            icon={faSpinner}
+            spin
+            /> :
+            <div className='empty-block'/>
+        }
+        <button
+          type='button'
+          onClick={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            // pour()
+            setDuration(15)
+          }}
+          className="pour-button"
+          >{duration > 0 ? 'Pouring...' : 'Pour'}</button>
+          {duration > 0 ? <Timer reset={() => setDuration(0)} stop={duration}/> : <div className="timer-container"/>}
+        </div>
     )
 }
 
@@ -39,11 +58,6 @@ const Timer = ({reset, stop}) => {
     }
     return (
         <>
-        <FontAwesomeIcon
-            className="spinner-icon"
-            icon={faSpinner}
-            spin
-        />
       <div className="timer-container">
         <div style={{width: `${percent}%`}} className="progress-bar"/>
       </div>

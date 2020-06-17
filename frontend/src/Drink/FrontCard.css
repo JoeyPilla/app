@@ -1,0 +1,11 @@
+.front-card-container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.front-card-cotainer-title {
+  font-size: 1.5em;
+}

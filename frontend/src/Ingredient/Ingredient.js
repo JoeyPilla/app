@@ -10,7 +10,9 @@ export default function Ingredient({ingredient, updated, setUpdated}) {
             className="times-circle-icon"
         icon={faTimesCircle}
         onClick={() => {
-          fetch(`/api/ingredient?id=${ingredient.id}`, { method: 'DELETE' }).then(() => setUpdated(!updated))
+          if (window.confirm(`Are you sure you want to delete ${ingredient.name}?`)) {
+            fetch(`/api/ingredient?id=${ingredient.id}`, { method: 'DELETE' }).then(() => setUpdated(!updated))
+           }
         }}
           />
     </div>

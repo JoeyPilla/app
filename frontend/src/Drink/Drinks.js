@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DrinkListElement from './DrinkListElement'
 import AddDrink from './AddDrink'
-
+import './Drinks.css'
 export default function Drinks() {
   const [updated, setUpdated] = useState(false)
   const [recipes, setRecipes] = useState([])
@@ -17,10 +17,11 @@ export default function Drinks() {
     recipe={recipe}
     updated={updated}
     setUpdated={setUpdated} 
+    key={recipe.id}
   />
   )
   return (
-    <div className="ingredients">
+    <div className="drinks-container">
       {availableRecipes}
       <AddDrink updated={updated} setUpdated={setUpdated}/>
     </div>

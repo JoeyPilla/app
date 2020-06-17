@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './Config.css';
 import IngredientDropdown from './IngredientDropdown'
-
+import {navigate} from '@reach/router'
 export default function Config() {
   const [ingredients, setIngredients] = useState([])
   const [motor0, setMotor0] = useState(0)
@@ -53,7 +53,7 @@ export default function Config() {
         motor6: motor5,
         motor7: motor6,
       })
-    })
+    }).then(() => navigate('/'))
   }
 
   return (
@@ -65,7 +65,8 @@ export default function Config() {
         item={1}
         value={motor0}
         setValue={setMotor0}
-        options={options}
+            options={options}
+            className='select-box'
         />
       <IngredientDropdown 
         item={2} 
@@ -103,7 +104,7 @@ export default function Config() {
         setValue={setMotor6} 
         options={options}
         />
-      <input type="submit" value="Submit"/>  
+      <button type="submit" className="form-button">Submit</button>
         </div>
     </form>
         </div>

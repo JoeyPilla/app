@@ -2,7 +2,7 @@ import React, { useState, useRef} from 'react';
 import './Add.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
-
+import AddForm from './AddForm'
 export default function Add({updated, setUpdated}) {
   const [recentlyAdded, setRecentlyAdded] = useState('');
   const [show, setShow] = useState(false)
@@ -11,7 +11,7 @@ export default function Add({updated, setUpdated}) {
   return (
     <>
     <Modal show={show}>
-        <Form
+        <AddForm
           setRecentlyAdded={setRecentlyAdded}
           updated={updated}
           setUpdated={setUpdated}
@@ -19,11 +19,15 @@ export default function Add({updated, setUpdated}) {
         />
       </Modal>
       {recentlyAdded.length > 0 && <p>Successfully added {recentlyAdded}!</p>}
-       <FontAwesomeIcon
+      {!show &&
+        <FontAwesomeIcon
         className="plus-circle-icon"
         icon={faPlusCircle}
-        onClick={() => setShow(true)}
-      />
+        onClick={() => {
+          setShow(true);
+          window.scrollTo(0, 0)
+        }}
+        />}
     </>
     )
 }
@@ -31,49 +35,14 @@ export default function Add({updated, setUpdated}) {
 const Modal = ({ children, show }) => {
   if (show) {
     return (
-      <div className="modal">
-      {children}
-    </div>
+      <>
+      <div className="modal-2">
+          {children}
+          <div className="color"/>
+      </div>
+        </>
   )
   } else {
     return <></>
 }
-}
-
-const Form = ({setRecentlyAdded, updated, setUpdated, setShow}) => {
-  const [ingredient, setIngredient] = useState('');
-  const ref = useRef(null)
-
-  React.useEffect(() => {
-    ref.current.focus()
-  }, [])
-
-  const handleSubmit = (e) => {
-  e.preventDefault()
-  if (ingredient.length > 0) {
-    fetch(`/api/ingredient?name=${encodeURI(ingredient)}`, {
-      method: 'POST'
-    }).then(() => {
-      setRecentlyAdded(ingredient)
-      setIngredient('')
-      setUpdated(!updated)
-      setShow(false)
-    })
-  }
-}
-  return (
-    <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <label>
-          Ingredient Name:
-        <input
-          ref={ref}
-          type="text"
-          name="name"
-          onChange={(e) => setIngredient(e.target.value)}
-          />
-      </label>
-    </form>
-    </div>
-  )
 }

@@ -23,7 +23,7 @@ export default function App() {
   return (
     <Router>
       <AppContainer path = "/">
-        <Home path="/" />
+        <Drinks path="/"/>
         <Config path="config" />
         {/* <IngredientAdd path="/ingredient/add" /> */}
         <AddDrink path="/new" />

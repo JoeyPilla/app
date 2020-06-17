@@ -1,0 +1,38 @@
+.c {
+  position: absolute;
+  max-width: 500px;
+  max-height: 500px;
+  width: 50ch;
+  height: 50ch;
+  cursor: pointer;
+  will-change: transform, opacity;
+}
+
+.front {
+  background-image: (top, #283E51, #48BEFF);
+  background: #48BEFF;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #283E51, #48BEFF);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #283E51, #48BEFF);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+}
+
+.back {
+  background-color: blue;
+}
+
+/* 
+<div onClick={() => setFlipped(state => !state)}>
+<a.div class="c back" style={{ opacity: opacity.interpolate(o => 1 - o), transform }}>
+    <h1>
+    {recipe.name}
+    <Pour recipeId={recipe.id} />
+  </h1>
+</a.div>
+<a.div class="c front" style={{ opacity, transform: transform.interpolate(t => `${t} rotateX(180deg)`) }}>
+{ingred}
+</a.div>
+</div> */

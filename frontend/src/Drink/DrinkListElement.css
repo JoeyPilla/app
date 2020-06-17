@@ -1,0 +1,36 @@
+.c {
+  max-width: 328px;
+  max-height: 328px;
+  cursor: pointer;
+  width: 200px;
+  height: 250px;
+  border-radius: 15px;
+  will-change: transform, opacity;
+}
+
+.front {
+  background: #e53935;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #e35d5b, #e53935);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #e35d5b, #e53935);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.back {
+  background: #48BEFF;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #545f66, #48BEFF);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #545f66, #48BEFF);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.drink-list-element-container {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+
+}

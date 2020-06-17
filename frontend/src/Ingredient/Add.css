@@ -5,17 +5,26 @@
   text-align: center;
 }
 
-.modal {
+.modal-2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+
+}
+
+.color {
   background-color: #545f66;
   opacity: 0.9;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
 }
 
 .plus-circle-icon {
