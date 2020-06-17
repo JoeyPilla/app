@@ -60,7 +60,6 @@ func drink(w http.ResponseWriter, r *http.Request) {
 		recipeId, _ := strconv.Atoi(r.FormValue("recipeId"))
 		measure, _ := strconv.ParseFloat(r.FormValue("measure"), 64)
 		unitOfMeasurement := r.FormValue("unitOfMeasurement")
-		fmt.Println(ingredientId, recipeId, measure, unitOfMeasurement)
 		count := addDrink(ingredientId, recipeId, measure, unitOfMeasurement)
 		fmt.Fprintf(w, fmt.Sprintf("%d records inserted.", count))
 	case "DELETE":

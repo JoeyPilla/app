@@ -45,7 +45,6 @@ func ingredient(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		name := r.FormValue("name")
-		fmt.Println(name)
 		count := AddIngredient(name)
 		fmt.Fprintf(w, fmt.Sprintf("%d records inserted.", count))
 	case "DELETE":

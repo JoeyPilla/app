@@ -20,7 +20,6 @@ func addRecipe(name string) Recipe {
 		tx.Rollback()
 		return Recipe{}
 	}
-	fmt.Print(result.LastInsertId())
 	rows, err := result.RowsAffected()
 	if err != nil {
 		log.Fatal(err)
